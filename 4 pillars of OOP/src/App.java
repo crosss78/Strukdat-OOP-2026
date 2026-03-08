@@ -16,8 +16,8 @@ public class App {
 abstract class Hewan {
     
     //Enkapsulasi
-    private String nama;
-    private int umur;
+    protected String nama;
+    protected int umur;
 
     //constructor
     public Hewan (String nama, int umur) {
@@ -61,4 +61,5 @@ class Ayam extends Hewan {
     void Suara(){
         System.out.println("suara Ayam: kukuruyukkk");
     }
+
 }
