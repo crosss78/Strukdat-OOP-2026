@@ -1,65 +1,63 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        
-        Hewan hewan1 = new Kucing("Tom", 2);
-        Hewan hewan2 = new Ayam("Rembo", 1);
+        Karakter c1 = new Mage("MIYA",100);
+        Karakter c2 = new Assassin("ASEP",50);
 
-        System.out.print("Nama hewannya: " + hewan1.getNama() + ", ");
-        hewan1.Suara();
-
-        System.out.print("Nama hewannya: " + hewan2.getNama() + ", ");
-        hewan2.Suara();
+        c1.tampilkan();
+        System.out.println();
+        c2.tampilkan();
     }
 }
 
+abstract class Karakter {
 
-abstract class Hewan {
-    
-    //Enkapsulasi
-    protected String nama;
-    protected int umur;
+    private String nama;
+    private int level;
 
-    //constructor
-    public Hewan (String nama, int umur) {
+    public Karakter(String nama, int level){
         this.nama = nama;
-        this.umur = umur;
+        this.level = level;
     }
 
-    //Egetter
-    public String getNama() {
+    public String getNama(){
         return nama;
-    
-    }
-    public int getUmur() {
-        return umur;
     }
 
-    //abstraction
-    abstract void Suara();
+    public int getLevel(){
+        return level;
+    }
+
+    public void tampilkan(){
+        System.out.println("NAMA  : " + nama);
+        System.out.println("ROLE  : " + getRole());
+        System.out.println("LEVEL : " + level);
+    }
+
+    // abstraction
+    abstract String getRole();
 }
 
-//inheritance
-class Kucing extends Hewan {
-    public Kucing (String nama, int umur){
-        super(nama, umur);
+//inheret
+class Mage extends Karakter {
+
+    public Mage(String nama, int level){
+        super(nama, level);
     }
 
-    //semua yang override ini masuknya ke polimorpism, ini masuknya polymorphism dengan method overriding 
     @Override
-    void Suara(){
-        System.out.println("suara Kucing: meong meong meong");
+    String getRole(){
+        return "MAGE";
     }
 }
 
-class Ayam extends Hewan {
-    public Ayam (String nama, int umur){
-        super(nama, umur);
+class Assassin extends Karakter {
+
+    public Assassin(String nama, int level){
+        super(nama, level);
     }
 
-    //semua yang override ini masuknya ke polimorpism
     @Override
-    void Suara(){
-        System.out.println("suara Ayam: kukuruyukkk");
+    String getRole(){
+        return "ASSASSIN";
     }
-
 }
